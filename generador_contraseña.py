@@ -22,8 +22,9 @@ def generar_contraseña():
     random.shuffle(inicio_contraseña)
     
     longitud_restante = longitud - len(inicio_contraseña)
-    contraseña_restante = ''.join(random.choice(caracteres) for i in range(longitud))
+    contraseña_restante = ''.join(random.choice(caracteres) for i in range(longitud_restante))
     contra_final = ''.join(inicio_contraseña) + contraseña_restante
+    
     return contra_final
 
 resultado = generar_contraseña()
