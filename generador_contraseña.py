@@ -14,8 +14,17 @@ def generar_contraseña():
     if caracteres_especiales:
         caracteres += string.punctuation
 
-    contraseña = ''.join(random.choice(caracteres) for _ in range(longitud))
-    return contraseña
+    inicio_contraseña = []
+    if numeros:
+        inicio_contraseña.append(random.choice(string.digits))
+    if caracteres_especiales:
+        inicio_contraseña.append(random.choice(string.punctuation))
+    random.shuffle(inicio_contraseña)
+    
+    longitud_restante = longitud - len(inicio_contraseña)
+    contraseña_restante = ''.join(random.choice(caracteres) for i in range(longitud))
+    contra_final = ''.join(inicio_contraseña) + contraseña_restante
+    return contra_final
 
-contra_final = generar_contraseña()
-print("Contraseña generada:", contra_final)
+resultado = generar_contraseña()
+print("Contraseña generada:", resultado.replace(",","").replace(".",""))
